@@ -1,122 +1,171 @@
+"use client";
 
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'JavaScript', href: '/javaScript' },
-    { name: 'React', href: '/react' },
-    { name: 'About Us', href: '/about' },
+    { name: "Home", href: "/" },
+    { name: "JavaScript", href: "/javaScript" },
+    { name: "React", href: "/react" },
+    { name: "About", href: "/about" },
   ];
 
   return (
-    <nav className="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold tracking-wide text-indigo-400">
-              DevAcademy<span className="text-white"></span>
-            </Link>
-          </div>
+    <nav className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 text-white backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          {/* ================= LOGO ================= */}
+          <Link href="/" className="group flex items-center gap-2">
+            {/* Logo Mark */}
+            <div className="flex  items-center justify-center p-1 rounded border-emerald-400/30 bg-emerald-400/10 font-mono text-sm font-bold text-emerald-400 transition-all duration-300  group-hover:bg-emerald-400/20">
+              &gt;_
+              <Image
+                src="/devAcademy_logo.png"
+                alt="devAcademy"
+                width={150}
+                height={40}
+                priority
+                className="h-9 w-auto"
+              />
+            </div>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex space-x-8">
+            {/* Logo Text */}
+            <div className="font-mono text-lg font-bold tracking-tight ">
+              <span className="text-white">dev</span>
+              <span className="text-emerald-400">Academy</span>
+            </div>
+          </Link>
+
+          {/* ================= DESKTOP NAV ================= */}
+          <div className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href);
+
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`transition-colors duration-200 font-medium ${
+                  className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? 'text-indigo-400 font-semibold border-b-2 border-indigo-400 pb-1'
-                      : 'text-gray-300 hover:text-white'
+                      ? "text-emerald-400"
+                      : "text-slate-400 hover:bg-slate-900 hover:text-slate-100"
                   }`}
                 >
                   {link.name}
+
+                  {/* Active Indicator */}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.7)]" />
+                  )}
                 </Link>
               );
             })}
           </div>
 
-          {/* Action Button */}
-          <div className="hidden md:flex items-center">
+          {/* ================= DESKTOP CTA ================= */}
+          <div className="hidden md:block">
             <Link
               href="/get-started"
-              className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg font-medium transition duration-200"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-400 transition-all duration-300 hover:border-emerald-400/60 hover:bg-emerald-400/15 hover:shadow-[0_0_20px_rgba(52,211,153,0.12)]"
             >
-              Get Started
+              <span>Start Learning</span>
+              <span className="transition-transform duration-200 group-hover:translate-x-1">
+                →
+              </span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              type="button"
-              className="text-gray-300 hover:text-white focus:outline-none"
-              aria-label="Toggle navigation"
-            >
+          {/* ================= MOBILE BUTTON ================= */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            type="button"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-slate-900 text-slate-400 transition hover:border-slate-700 hover:text-white md:hidden"
+            aria-label="Toggle navigation"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? (
               <svg
-                className="h-6 w-6 fill-current"
+                className="h-5 w-5"
+                fill="none"
                 viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.8}
               >
-                {isOpen ? (
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-                  />
-                ) : (
-                  <path
-                    fillRule="evenodd"
-                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                  />
-                )}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
-            </button>
-          </div>
-
+            ) : (
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.8}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* ================= MOBILE MENU ================= */}
       {isOpen && (
-        <div className="md:hidden bg-slate-800 px-2 pt-2 pb-4 space-y-1 sm:px-3 border-t border-slate-700">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
+        <div className="border-t border-slate-800/80 bg-slate-950/95 backdrop-blur-xl md:hidden">
+          <div className="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6">
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href);
+
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`flex items-center justify-between rounded-lg px-4 py-3 text-sm font-medium transition ${
+                    isActive
+                      ? "bg-emerald-400/10 text-emerald-400"
+                      : "text-slate-400 hover:bg-slate-900 hover:text-white"
+                  }`}
+                >
+                  <span>{link.name}</span>
+
+                  {isActive && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                  )}
+                </Link>
+              );
+            })}
+
+            {/* Mobile CTA */}
+            <div className="pt-3">
               <Link
-                key={link.name}
-                href={link.href}
+                href="/get-started"
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-300 hover:bg-slate-700 hover:text-white'
-                }`}
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
               >
-                {link.name}
+                Start Learning
+                <span>→</span>
               </Link>
-            );
-          })}
-          <div className="pt-2">
-            <Link
-              href="/get-started"
-              onClick={() => setIsOpen(false)}
-              className="block w-full text-center bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-md font-medium"
-            >
-              Get Started
-            </Link>
+            </div>
           </div>
         </div>
       )}
