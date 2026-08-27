@@ -1,27 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  background:  linear-gradient( rgb(8, 13, 6) , rgb(13, 13, 33),  rgb(54, 80, 76) );
+  color: rgba(245, 245, 245, 0.936);
 }

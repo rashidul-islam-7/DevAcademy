@@ -26,7 +26,7 @@ export default function HeroSection() {
       </div>
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:3rem_3rem] sm:bg-[size:4rem_4rem] mask-[radial-gradient(ellipse_70%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:3rem_3rem] sm:bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       {/* Main Container */}
       <div className="relative mx-auto w-full max-w-7xl">
         {/* Badge + Philosophy */}
@@ -44,19 +44,19 @@ export default function HeroSection() {
         </div>
 
         {/* Hero Grid */}
-        <div className=" grid items-center gap-10  lg:grid-cols-12 lg:gap-10">
+        <div className=" grid items-center gap-10  lg:grid-cols-12 lg:gap-8">
           {/* ================= LEFT CONTENT ================= */}
           <div className="text-center lg:col-span-7 lg:text-left">
             {/* Main Title */}
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[50px] lg:leading-[1.15]">
-              Learn Everyday. Learn Today.
+              Learn Today.{" "}
               <span className="bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
                 Build Tomorrow.
               </span>
             </h1>
 
             {/* Description */}
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:mt-6 sm:text-base sm:leading-relaxed md:text-lg lg:mx-0">
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:mt-6 sm:text-base sm:leading-relaxed lg:mx-0">
               Programming শেখাকে সহজ, practical এবং approachable করে তুলতেই এই
               learning platform-এর যাত্রা। আমি যা শিখি, আগে নিজে বুঝি, তারপর সহজ
               ভাষায় লিখে রাখি—যাতে একজন নতুন learner-ও সহজে বুঝতে এবং practice
@@ -88,7 +88,7 @@ export default function HeroSection() {
           {/* ================= RIGHT TERMINAL ================= */}
           <div className="relative w-full lg:col-span-5">
             {/* Background Glow */}
-            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 blur-xl opacity-75" />
+            <div className="absolute -inset-1 rounded-3xl bg-linear-to-r from-emerald-500/20 to-cyan-500/20 blur-xl opacity-75" />
 
             {/* Terminal */}
             <div className="relative w-full overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-2xl backdrop-blur-xl">
@@ -146,7 +146,7 @@ export default function HeroSection() {
               </div>
 
               {/* Terminal Footer */}
-              <div className="flex flex-col gap-3 border-t border-slate-800/80 bg-slate-950/60 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-5 sm:py-3.5">
+              <div className="flex flex-col gap-3 border-t border-slate-800/80 bg-slate-950/60 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-5 sm:py-3.5 ">
                 {/* Code Flow */}
                 <div className="flex min-w-0 items-center gap-1.5 overflow-x-auto whitespace-nowrap font-mono text-[10px] text-slate-400 sm:gap-2 sm:text-xs">
                   <span className="font-bold text-emerald-400">&gt;</span>

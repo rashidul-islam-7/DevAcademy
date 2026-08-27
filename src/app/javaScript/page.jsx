@@ -1,8 +1,9 @@
-
-import React from 'react'
+import React from "react";
 
 export default function JavaScriptPage() {
   return (
-    <div>JavaScriptPage</div>
-  )
+    <div className="h-screen w-full">
+      JavaScriptPage
+    </div>
+  );
 }
